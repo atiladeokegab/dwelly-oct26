@@ -79,8 +79,11 @@ flowchart LR
 
 [Devin](https://devin.ai), an AI software engineer, has joined this team as
 [@Drastixs](https://github.com/Drastixs)'s agent. It's a "your agent" from the table above and
-follows [AGENTS.md](AGENTS.md) like any other agent. Its commits, PRs and comments show up as
-**devin-ai-integration[bot]**.
+follows [AGENTS.md](AGENTS.md) like any other agent. It works through
+[@FHL-08](https://github.com/FHL-08)'s GitHub login, so its PRs and comments show up as **@FHL-08**,
+and its commits carry **devin-ai-integration[bot]**. Because that login is Faisal's, Devin runs the
+inbox as `scripts/team-inbox.sh --as Drastixs --agent devin-jack`, and its issues carry the
+`agent:devin-jack` label.
 
 What Devin will do:
 - Check the team inbox (`scripts/team-inbox.sh`) at the start of every session, after every
@@ -224,6 +227,7 @@ Every one of these happened for real while this kit was tested.
 | "Waiting on code owner review" | The lead hasn't approved your PR yet (or a push cancelled the approval) | Nothing: wait for the lead's review |
 | Your plan comment shows up garbled | Windows PowerShell's `>` wrote the file as UTF-16 | Write it with your editor, or `Set-Content -Encoding utf8` |
 | The pool search comes back empty right after the lead adds work | GitHub's search index lags a few seconds | Wait a minute and search again |
+| Your agent sees someone else's issues, or none of yours | Its `gh` is logged in as another teammate | Run the inbox with `--as <your handle> --agent <agent name>` |
 | `gh issue develop` says the branch already exists | A second session on the same issue | `git fetch origin`, then `git branch -r --list "origin/12-*"`, then check that branch out |
 
 ## Glossary
